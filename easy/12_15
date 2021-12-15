@@ -1,0 +1,54 @@
+class MinStack(object):
+#  Creating a function to realize a stack, which possesses basic functions such as pop(), push() and so on but also 
+can return the minimal value while running "min()" function is toady's Leetcode question. To fulfill this demand, a major 
+stack "stack_A" and a subsidiary stack "stack_B" are proposed. 
+# To be honest, I am poor for my English skills to describe a question concertely. But I will try my best and stick to 
+this format. 
+ # I believe that this task should be of extreme interest to the learning people not only for its efficacy, but also 
+ it depicts unexpected attractiveness different to those found in the canonical learning task. 
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack_A, self.stack_B = [], []
+
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        self.stack_A.append(x)
+        if not self.stack_B or self.stack_B[-1] >= x:
+            self.stack_B.append(x)
+
+    def pop(self):
+        """
+        :rtype: None
+        """
+        if self.stack_A.pop() == self.stack_B[-1]:
+            self.stack_B.pop()
+
+
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack_A[-1]
+
+
+    def min(self):
+        """
+        :rtype: int
+        """
+        return self.stack_B[-1]
+
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.min()
