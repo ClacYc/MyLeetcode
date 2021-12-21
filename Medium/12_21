@@ -1,0 +1,27 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        # if head == None
+        if not head: return head
+        # initialize a hash map 'dic' and an auxiliary Node 'cur'
+        dic = {}
+        cur = head
+        # replicate the origin complex list's values into 'dic' by using a while loop  'O(N)'
+        while cur:
+            dic[cur] = Node(cur.val)
+            cur = cur.next
+        cur = head
+        # input the origin complex list's 'next' and 'random' into the 'dic'
+        while cur:
+            dic[cur].next = dic.get(cur.next)
+            dic[cur].random = dic.get(cur.random)
+            cur = cur.next
+
+        return dic[head]
