@@ -1,0 +1,15 @@
+# Given a string 's' and a number 'n' to reverse the string n units following the left direction . 
+
+# One solution:
+
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
+        new = []
+        new.append(s[n:])
+        new.append(s[:n])
+        return ''.join(new)
+        
+# 2nd :
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
+    return s[n:] + s[:n]
