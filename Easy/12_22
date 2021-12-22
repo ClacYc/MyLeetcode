@@ -1,0 +1,9 @@
+class Solution:
+# this fuction is uesed to replace the "blank" in a given string with "%20"
+
+    def replaceSpace(self, s: str) -> str:
+        new = []
+        for i in s:
+            if i == ' ': new.append('%20')
+            else:new.append(i)
+        return ''.join(new)
