@@ -1,0 +1,28 @@
+class Solution:
+#  Finding duplicate numbers in an array:
+
+    All numbers in an array nums of lenth n are in the range 0 to (n-1), Some numbers in the array are duplicated, but it is not known that how many numbers and times each number is duplicated, 
+    
+    Please find any of the arbitrary duplicated numbers in the array. 
+    # the 1st solution 
+    def findRepeatNumber(self, nums: List[int]) -> int:
+        dic = set()
+        for i in nums:
+            if i in dic:return i
+            dic.add(i)
+        return -1
+        
+    # the 2ed solution 
+       class Solution:
+    def findRepeatNumber(self, nums: [int]) -> int:
+        i = 0
+        while i < len(nums):
+            if nums[i] == i:
+                i += 1
+                continue
+            if nums[nums[i]] == nums[i]: return nums[i]
+            nums[nums[i]], nums[i] = nums[i], nums[nums[i]]
+        return -1
+
+       
+      
