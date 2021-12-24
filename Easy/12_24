@@ -1,0 +1,29 @@
+#  Given a sorted array 'nums' and a number 'target', I need to return the number of times a 'target' appears in a sorted array. 
+
+
+class Solution:
+# 1st
+# Spatial cplx : O(N), Time clpx : O(1) 
+
+    def search(self, nums: List[int], target: int) -> int:
+        index = 0
+        for i in nums:
+            if i == target: index += 1
+        return index
+# 2ed Dichotomous method 
+#  I truly recommend you(if you see here) to take a glance to this great and quick-witted solution ! 
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        def helper(tar):
+            i, j = 0, len(nums) - 1
+            while i <= j:
+                m = (i + j) // 2
+                if nums[m] <= tar: i = m + 1
+                else: j = m - 1
+            return i
+        return helper(target) - helper(target - 1)
+
+     
+
+        
