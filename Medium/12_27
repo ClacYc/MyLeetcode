@@ -1,0 +1,19 @@
+
+# The question descrition is as follows:
+
+#In a n * m 2-dimension sorted matrix, each row is sorted in ascending order from left to right, besides, each column is sorted in ascending order from top to toe. 
+
+# Please complete an efficient function, in which inputs such a matrix as described above and an integral target number, then determines whether the array contains the integer. 
+
+# I assume this is a vey useful solution and very worth to learn for you !
+
+Complete an efficient function that inputs such a two-dimensional array and an integer, and determines whether the array contains the integer.
+
+class Solution:
+    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -> bool:
+        i, j = len(matrix) - 1, 0
+        while i >= 0 and j < len(matrix[0]):
+            if matrix[i][j] > target: i -= 1
+            elif matrix[i][j] < target: j += 1
+            else: return True
+        return False
