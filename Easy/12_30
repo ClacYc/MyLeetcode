@@ -1,0 +1,26 @@
+# the functiom meanages to find a first number, which is stored in a given string 's' only once, and then return itself. 
+
+# If no number satisfy the requirment above then return a 'blank space'
+
+# I use a 'hash table 'to implement it .  
+
+class Solution:
+    def firstUniqChar(self, s: str) -> str:
+        dic={}
+        for i in s:
+            dic[i]= i in dic
+        for i in s:
+            if not dic[i]: return i
+        return ' '        
+        
+        
+        
+        class Solution:
+    def firstUniqChar(self, s: str) -> str:
+        dic={}
+        for i in s:
+            dic[i]= i in dic
+        for i in s:
+            if not dic[i]: return i
+        return ' '        
+        
