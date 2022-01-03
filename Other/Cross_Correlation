@@ -1,0 +1,33 @@
+def My_Conv_2D_2(X, K, b, stride, pad):
+    '''
+
+    :param X: (m, H, W, C_prev)
+    :param K: (f, f, C_prev, C) and b: (1, 1, 1, C)
+    :param stride: stride
+    :param pad: pad
+    :return:
+
+    '''
+    m, H, W, C_prev = X.shape
+    f1, f2, C_prev, C = K.shape
+
+    h_output, w_output = int(((H - f1 + (2 * pad))) / stride) + 1, int(((W - f2 + (2 * pad))) / stride) + 1
+    Z = np.zeros((m, h_output, w_output, C))
+    X = My_pad(X, pad)
+    for i in range(m):
+        x = X[i, :, :, :]   #  x:(H, W, C_prev)
+        for h in range(h_output):
+            for w in range(w_output):
+                for c in range(C):
+                    h_start = h * stride
+                    h_end = h_start + f1
+                    w_start = w * stride
+                    w_end = w_start + f2
+                    Z[i, h, w, c] = (x[h_start:h_end, w_start:w_end, :] * K[:,:,:,c]).sum()
+    return Z
+X = np.random.randn(10, 5, 5, 3)
+K = np.random.randn(2, 3, 3, 3)
+stride = 2
+pad = 2
+Z = My_Conv_2D_2(X, K, 0, stride, pad)
+print(Z.shape)
