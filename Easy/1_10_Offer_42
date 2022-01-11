@@ -1,0 +1,13 @@
+#  Find out maximum path from the top-left to the bottom-right in a given matix, which regulate the path 
+
+
+class Solution:
+    def maxValue(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j == 0:grid[i][j] = grid[0][0]
+                if i == 0 and j != 0:grid[i][j] += grid[i][j - 1]
+                if i != 0 and j == 0:grid[i][j] += grid[i - 1][j]
+                if i != 0 and j != 0:grid[i][j] += max(grid[i-1][j], grid[i][j-1])
+        return grid[m-1][n-1]
