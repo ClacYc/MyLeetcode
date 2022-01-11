@@ -1,0 +1,26 @@
+#  A Frog can just jump one or two floors in once junmp. 
+#   spatial cmp : O(n), time cmp : O(n)
+
+class Solution:
+    def numWays(self, n: int) -> int:
+      if n == 0 or n == 1 : return 1
+      res = []
+      res.append(1)
+      res.append(1)
+      for i in range(2, n+1):
+          res.append((res[i - 1] + res[i - 2])%1000000007)
+      return res[n]
+      
+      
+      
+ #   spatial cmp : O(1), time cmp : O(n)
+
+class Solution:
+    def numWays(self, n: int) -> int:
+      if n == 0 or n == 1 : return 1
+      a , b = 1, 1
+      for _ in range(n-1):
+          sum = (a + b) % 1000000007
+          a = b
+          b = sum
+      return sum
