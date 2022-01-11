@@ -1,0 +1,15 @@
+
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+         dic = []
+         pre = 0
+         dic.append(nums[0])
+         for num in nums:
+             if pre>0:
+                 pre = pre + num
+                 dic.append(pre)
+             else:
+                 pre = num
+                 dic.append(pre)
+         return max(dic)
