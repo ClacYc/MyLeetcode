@@ -1,0 +1,10 @@
+#  Compute the maximum stock profits if the trend has been given
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        Min, Max = float('+inf'), 0
+        for price in prices:
+            Min = min(Min, price)
+            profit = price - Min
+            Max = max(profit, Max)
+        return Max
