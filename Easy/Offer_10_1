@@ -1,0 +1,35 @@
+#  Fibonacci Function 
+
+class Solution:
+    def fib(self, n: int) -> int:
+        if n == 0 : return 0
+        if n == 1 : return 1
+        res = []
+        res.append(1)
+        res.append(1)
+        
+        for i in range(2, n+1):
+            res.append((res[i - 1] + res[i - 2]) % (10**9+7)) 
+        return res[n]
+        
+class Solution:
+    def fib(self, n: int) -> int:
+      if n < 2:return n
+      a, b = 0, 1
+      for _ in range(n-1):
+          sum = (a+ b) % 1000000007
+          a = b
+          b = sum
+      return sum
+      
+      
+#  Best solution is as follows(Dp):
+class Solution:
+    def fib(self, n: int) -> int:
+      if n < 2:return n
+      a, b = 0, 1
+      for _ in range(n-1):
+          sum = (a+ b) % 1000000007
+          a = b
+          b = sum
+      return sum
